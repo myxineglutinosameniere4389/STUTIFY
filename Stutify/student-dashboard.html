@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stutify - Student Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Example inline styling for loading bar */
+        .progress-container {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 8px;
+            height: 16px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 50%; /* half-loaded */
+            background-color: #4CAF50;
+            transition: width 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-flex">
+            <div class="navbar-left">
+                <span class="navbar-logo">🎓</span>
+                <a href="index.html" class="site-title">Stutify</a>
+            </div>
+            <div class="navbar-right">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <h1>Student Dashboard</h1>
+            <p>Welcome back! Here's your academic overview.</p>
+        </header>
+        <section class="stats-row">
+            <div class="stat-card stat-card-primary">
+                <div class="stat-title">Attendance Rate</div>
+                <div class="stat-value">87%</div>
+                <div class="stat-desc">Overall Attendance</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Pending Requests</div>
+                <div class="stat-value">3</div>
+                <div class="stat-desc">Awaiting approval</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Classes Attended Today</div>
+                <div class="stat-value">6</div>
+                <div class="stat-desc">Next: Mathematics at 2:00 PM</div>
+            </div>
+            <!-- Replaced Take Attendance with Today's Attendance -->
+            <div class="stat-card">
+                <div class="stat-title">Attendance Today</div>
+                <div class="stat-value">50%</div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="stat-desc">Half of today's classes attended</div>
+            </div>
+        </section>
+        <section class="nav-cards-row">
+            <a href="attendance-report.html" class="nav-card">
+                <span class="nav-card-icon">📊</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">Attendance Report</div>
+                    <div class="nav-card-desc">View your detailed attendance records and statistics</div>
+                </div>
+            </a>
+            <a href="leave-request.html" class="nav-card">
+                <span class="nav-card-icon">📝</span>
+                <span class="nav-card-badge">1</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">Leave Request</div>
+                    <div class="nav-card-desc">Submit new leave applications and track status</div>
+                </div>
+            </a>
+            <a href="od-request.html" class="nav-card">
+                <span class="nav-card-icon">⏰</span>
+                <span class="nav-card-badge">2</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">OD Request</div>
+                    <div class="nav-card-desc">Apply for official duty and outdoor activities</div>
+                </div>
+            </a>
+            <a href="virtual-study-room.html" class="nav-card">
+                <span class="nav-card-icon">👥</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">Virtual Study Room</div>
+                    <div class="nav-card-desc">Join collaborative learning spaces and study with peers</div>
+                </div>
+            </a>
+            <a href="calendar.html" class="nav-card">
+                <span class="nav-card-icon">📅</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">Calendar</div>
+                    <div class="nav-card-desc">View academic calendar and important dates</div>
+                </div>
+            </a>
+        </section>
+    </main>
+</body>
+</html>

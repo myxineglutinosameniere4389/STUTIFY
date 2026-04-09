@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stutify - Virtual Study Rooms</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f4f8;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+
+        .join-details {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .join-details h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .join-details p {
+            margin: 0.5rem 0;
+            color: #6c757d;
+        }
+
+        .join-details strong {
+            color: #2c3e50;
+        }
+
+        .room-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .room-info-item {
+            background-color: white;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .room-info-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+
+        .room-info-value {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-flex">
+            <div class="navbar-left">
+                <span class="navbar-logo">🎓</span>
+                <a href="index.html" class="site-title">Stutify</a>
+            </div>
+            <div class="navbar-right">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="dashboard-main">
+        <a href="student-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        <header class="dashboard-header">
+            <h1>Virtual Study Rooms</h1>
+            <p>Connect with peers, collaborate, and learn together in real-time</p>
+        </header>
+        <section class="stats-row">
+            <div class="stat-card stat-card-primary">
+                <div class="stat-title">Active Rooms</div>
+                <div class="stat-value">12 <span style="font-size:1.3rem;vertical-align:middle;margin-left:0.5rem;">&#128249;</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Students Online</div>
+                <div class="stat-value">247 <span style="font-size:1.3rem;vertical-align:middle;margin-left:0.5rem;">&#128101;</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Study Sessions Today</div>
+                <div class="stat-value">34 <span style="font-size:1.3rem;vertical-align:middle;margin-left:0.5rem;">&#128218;</span></div>
+            </div>
+        </section>
+        <section class="vsr-toolbar">
+            <input type="text" class="vsr-search" placeholder="Search study rooms by topic, subject, or keywords...">
+            <div class="vsr-filters">
+                <button class="vsr-filter vsr-filter-active">All</button>
+                <button class="vsr-filter">Mathematics</button>
+                <button class="vsr-filter">Computer Science</button>
+                <button class="vsr-filter">Chemistry</button>
+                <button class="vsr-filter">Physics</button>
+                <button class="vsr-filter">Biology</button>
+                <button class="vsr-filter">Engineering</button>
+            </div>
+            <button class="vsr-create-btn" onclick="showCreateRoomModal()">+ Create Room</button>
+        </section>
+        <section class="vsr-rooms-grid">
+            <div class="vsr-room-card">
+                <div class="vsr-room-header">
+                    <span class="vsr-room-title">Calculus Problem Solving</span>
+                    <span class="vsr-room-status vsr-room-status-online"></span>
+                </div>
+                <span class="vsr-room-tag">Mathematics</span>
+                <div class="vsr-room-desc">Working on integration and differentiation problems</div>
+                <div class="vsr-room-host"><span class="vsr-room-host-avatar">SM</span> Hosted by Sarah M.</div>
+                <div class="vsr-room-meta">
+                    <span class="vsr-room-meta-item">&#128101; 4/8</span>
+                    <span class="vsr-room-meta-item vsr-room-meta-active">Active</span>
+                </div>
+                <div class="vsr-room-tags">
+                    <span class="vsr-room-tag">Integration</span>
+                    <span class="vsr-room-tag">Derivatives</span>
+                    <span class="vsr-room-tag">Problem Sets</span>
+                </div>
+                <div class="vsr-room-actions">
+                    <button class="vsr-join-btn" onclick="showJoinRoomModal('Calculus Problem Solving', 'Mathematics', 'Working on integration and differentiation problems', 'Sarah M.', 4, 8, ['Integration', 'Derivatives', 'Problem Sets'])">&#128249; Join Room</button>
+                    <button class="vsr-room-info-btn">&#128269;</button>
+                </div>
+            </div>
+            <div class="vsr-room-card">
+                <div class="vsr-room-header">
+                    <span class="vsr-room-title">Data Structures Study Group</span>
+                    <span class="vsr-room-status vsr-room-status-online"></span>
+                </div>
+                <span class="vsr-room-tag">Computer Science</span>
+                <div class="vsr-room-desc">Reviewing trees, graphs, and algorithm complexity</div>
+                <div class="vsr-room-host"><span class="vsr-room-host-avatar">AK</span> Hosted by Alex K.</div>
+                <div class="vsr-room-meta">
+                    <span class="vsr-room-meta-item">&#128101; 6/10</span>
+                    <span class="vsr-room-meta-item vsr-room-meta-active">Active</span>
+                </div>
+                <div class="vsr-room-tags">
+                    <span class="vsr-room-tag">Algorithms</span>
+                    <span class="vsr-room-tag">Trees</span>
+                    <span class="vsr-room-tag">Graphs</span>
+                </div>
+                <div class="vsr-room-actions">
+                    <button class="vsr-join-btn" onclick="showJoinRoomModal('Data Structures Study Group', 'Computer Science', 'Reviewing trees, graphs, and algorithm complexity', 'Alex K.', 6, 10, ['Algorithms', 'Trees', 'Graphs'])">&#128249; Join Room</button>
+                    <button class="vsr-room-info-btn">&#128269;</button>
+                </div>
+            </div>
+            <div class="vsr-room-card">
+                <div class="vsr-room-header">
+                    <span class="vsr-room-title">Organic Chemistry Lab Prep</span>
+                    <span class="vsr-room-status vsr-room-status-online"></span>
+                </div>
+                <span class="vsr-room-tag">Chemistry</span>
+                <div class="vsr-room-desc">Preparing for upcoming lab experiments</div>
+                <div class="vsr-room-host"><span class="vsr-room-host-avatar">ER</span> Hosted by Emma R.</div>
+                <div class="vsr-room-meta">
+                    <span class="vsr-room-meta-item">&#128101; 3/6</span>
+                    <span class="vsr-room-meta-item vsr-room-meta-active">Active</span>
+                </div>
+                <div class="vsr-room-tags">
+                    <span class="vsr-room-tag">Lab</span>
+                    <span class="vsr-room-tag">Reactions</span>
+                    <span class="vsr-room-tag">Synthesis</span>
+                </div>
+                <div class="vsr-room-actions">
+                    <button class="vsr-join-btn" onclick="showJoinRoomModal('Organic Chemistry Lab Prep', 'Chemistry', 'Preparing for upcoming lab experiments', 'Emma R.', 3, 6, ['Lab', 'Reactions', 'Synthesis'])">&#128249; Join Room</button>
+                    <button class="vsr-room-info-btn">&#128269;</button>
+                </div>
+            </div>
+            <div class="vsr-room-card">
+                <div class="vsr-room-header">
+                    <span class="vsr-room-title">Physics Quantum Mechanics</span>
+                    <span class="vsr-room-status"></span>
+                </div>
+                <span class="vsr-room-tag">Physics</span>
+                <div class="vsr-room-desc">Deep dive into quantum theory and applications</div>
+                <div class="vsr-room-host"><span class="vsr-room-host-avatar">MB</span> Hosted by Mike B.</div>
+                <div class="vsr-room-meta">
+                    <span class="vsr-room-meta-item">&#128101; 2/7</span>
+                </div>
+                <div class="vsr-room-tags">
+                    <span class="vsr-room-tag">Quantum</span>
+                    <span class="vsr-room-tag">Theory</span>
+                </div>
+                <div class="vsr-room-actions">
+                    <button class="vsr-join-btn" onclick="showJoinRoomModal('Physics Quantum Mechanics', 'Physics', 'Deep dive into quantum theory and applications', 'Mike B.', 2, 7, ['Quantum', 'Theory'])">&#128249; Join Room</button>
+                    <button class="vsr-room-info-btn">&#128269;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Join Room Modal -->
+    <div id="joinRoomModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Join Study Room</h2>
+                <span class="close" onclick="closeModal('joinRoomModal')">&times;</span>
+            </div>
+            <div id="joinRoomDetails" class="join-details">
+                <!-- Room details will be populated here -->
+            </div>
+            <form class="modal-form" id="joinRoomForm">
+                <div class="form-group">
+                    <label for="displayName">Your Display Name</label>
+                    <input type="text" id="displayName" name="displayName" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="joinMessage">Join Message (Optional)</label>
+                    <textarea id="joinMessage" name="joinMessage" placeholder="Introduce yourself to the group..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('joinRoomModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Join Room</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Room Modal -->
+    <div id="createRoomModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Create New Study Room</h2>
+                <span class="close" onclick="closeModal('createRoomModal')">&times;</span>
+            </div>
+            <form class="modal-form" id="createRoomForm">
+                <div class="form-group">
+                    <label for="roomTitle">Room Title</label>
+                    <input type="text" id="roomTitle" name="roomTitle" required placeholder="e.g., Calculus Problem Solving">
+                </div>
+                <div class="form-group">
+                    <label for="roomSubject">Subject</label>
+                    <select id="roomSubject" name="roomSubject" required>
+                        <option value="">Select a subject</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Biology">Biology</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Literature">Literature</option>
+                        <option value="History">History</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="roomDescription">Description</label>
+                    <textarea id="roomDescription" name="roomDescription" required placeholder="Describe what you'll be studying or working on..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="maxParticipants">Maximum Participants</label>
+                    <select id="maxParticipants" name="maxParticipants" required>
+                        <option value="2">2 people</option>
+                        <option value="4">4 people</option>
+                        <option value="6" selected>6 people</option>
+                        <option value="8">8 people</option>
+                        <option value="10">10 people</option>
+                        <option value="15">15 people</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="roomTags">Tags (comma separated)</label>
+                    <input type="text" id="roomTags" name="roomTags" placeholder="e.g., calculus, integration, derivatives">
+                </div>
+                <div class="form-group">
+                    <label for="roomPrivacy">Privacy Setting</label>
+                    <select id="roomPrivacy" name="roomPrivacy" required>
+                        <option value="public" selected>Public - Anyone can join</option>
+                        <option value="private">Private - Invite only</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('createRoomModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Room</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Show join room modal with room details
+        function showJoinRoomModal(title, subject, description, host, currentParticipants, maxParticipants, tags) {
+            const modal = document.getElementById('joinRoomModal');
+            const detailsDiv = document.getElementById('joinRoomDetails');
+            
+            detailsDiv.innerHTML = `
+                <h3>${title}</h3>
+                <div class="room-info-grid">
+                    <div class="room-info-item">
+                        <div class="room-info-label">Subject</div>
+                        <div class="room-info-value">${subject}</div>
+                    </div>
+                    <div class="room-info-item">
+                        <div class="room-info-label">Host</div>
+                        <div class="room-info-value">${host}</div>
+                    </div>
+                    <div class="room-info-item">
+                        <div class="room-info-label">Participants</div>
+                        <div class="room-info-value">${currentParticipants}/${maxParticipants}</div>
+                    </div>
+                    <div class="room-info-item">
+                        <div class="room-info-label">Status</div>
+                        <div class="room-info-value">Active</div>
+                    </div>
+                </div>
+                <p><strong>Description:</strong> ${description}</p>
+                <p><strong>Tags:</strong> ${tags.join(', ')}</p>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        // Show create room modal
+        function showCreateRoomModal() {
+            const modal = document.getElementById('createRoomModal');
+            modal.style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+        }
+
+        // Handle form submissions
+        document.getElementById('joinRoomForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const displayName = formData.get('displayName');
+            const joinMessage = formData.get('joinMessage');
+            
+            // Here you would typically send this data to your backend
+            alert(`Joining room as ${displayName}...`);
+            closeModal('joinRoomModal');
+            this.reset();
+        });
+
+        document.getElementById('createRoomForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const roomTitle = formData.get('roomTitle');
+            const roomSubject = formData.get('roomSubject');
+            const roomDescription = formData.get('roomDescription');
+            
+            // Here you would typically send this data to your backend
+            alert(`Creating room: ${roomTitle} (${roomSubject})...`);
+            closeModal('createRoomModal');
+            this.reset();
+        });
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

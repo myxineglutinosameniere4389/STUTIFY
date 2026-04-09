@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stutify - Management Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-flex">
+            <div class="navbar-left">
+                <span class="navbar-logo">🎓</span>
+                <a href="index.html" class="site-title">Stutify</a>
+            </div>
+            <div class="navbar-right">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <h1>Management Dashboard</h1>
+            <p>Oversee student activities and approve requests efficiently.</p>
+        </header>
+        <section class="stats-row">
+            <div class="stat-card stat-card-primary">
+                <div class="stat-title">Pending Approvals</div>
+                <div class="stat-value">12</div>
+                <div class="stat-desc">Requires attention</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Total Students</div>
+                <div class="stat-value">245</div>
+                <div class="stat-desc">Active this semester</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Approved Today</div>
+                <div class="stat-value">8</div>
+                <div class="stat-desc">Requests processed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Average Attendance</div>
+                <div class="stat-value" style="color:var(--primary-blue);font-weight:700;">89%</div>
+                <div class="stat-desc">This week</div>
+            </div>
+        </section>
+        <section class="nav-cards-row">
+            <a href="leave-approval.html" class="nav-card">
+                <span class="nav-card-icon">✔️</span>
+                <span class="nav-card-badge">7</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">Leave Approval</div>
+                    <div class="nav-card-desc">Review and approve student leave applications</div>
+                </div>
+            </a>
+            <a href="od-approval.html" class="nav-card">
+                <span class="nav-card-icon">⏰</span>
+                <span class="nav-card-badge">5</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">OD Approval</div>
+                    <div class="nav-card-desc">Manage official duty and outdoor activity requests</div>
+                </div>
+            </a>
+            <a href="student-report.html" class="nav-card">
+                <span class="nav-card-icon">📊</span>
+                <div class="nav-card-content">
+                    <div class="nav-card-title">Student Reports</div>
+                    <div class="nav-card-desc">View comprehensive student analytics and reports</div>
+                </div>
+            </a>
+        </section>
+    </main>
+</body>
+</html> 

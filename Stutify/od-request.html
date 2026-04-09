@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stutify - OD Request</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-flex">
+            <div class="navbar-left">
+                <span class="navbar-logo">🎓</span>
+                <a href="index.html" class="site-title">Stutify</a>
+            </div>
+            <div class="navbar-right">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="dashboard-main">
+        <a href="student-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        <header class="dashboard-header">
+            <h1>OD Request</h1>
+            <p>Submit On Duty applications and track their status</p>
+        </header>
+        <section class="lr-grid">
+            <div class="lr-card lr-form-card">
+                <div class="lr-card-title"><span style="font-size:1.2rem;vertical-align:middle;">⏰</span> Submit New Request</div>
+                <form class="lr-form">
+                    <label for="od-type">OD Type</label>
+                    <select id="od-type" name="od-type">
+                        <option>Sports Event</option>
+                        <option>Seminar/Workshop</option>
+                        <option>Competition</option>
+                        <option>Other</option>
+                    </select>
+                    <div class="lr-form-row">
+                        <div class="lr-form-group">
+                            <label for="start-date">Start Date</label>
+                            <input type="date" id="start-date" name="start-date" placeholder="dd-mm-yyyy">
+                        </div>
+                        <div class="lr-form-group">
+                            <label for="end-date">End Date</label>
+                            <input type="date" id="end-date" name="end-date" placeholder="dd-mm-yyyy">
+                        </div>
+                    </div>
+                    <label for="reason">Reason for OD</label>
+                    <textarea id="reason" name="reason" rows="3" placeholder="Please provide a detailed reason for your OD request..."></textarea>
+                    <button type="submit" class="lr-submit-btn">Submit Request</button>
+                </form>
+            </div>
+            <div class="lr-card lr-history-card">
+                <div class="lr-card-title"><span style="font-size:1.2rem;vertical-align:middle;">&#128197;</span> Request History</div>
+                <div class="lr-history-list">
+                    <div class="lr-history-item">
+                        <div class="lr-history-type">Sports Event</div>
+                        <div class="lr-history-dates">2024-02-10 to 2024-02-12</div>
+                        <div class="lr-history-reason">Inter-college football tournament</div>
+                        <span class="lr-status-badge lr-status-pending">Pending</span>
+                    </div>
+                    <div class="lr-history-item">
+                        <div class="lr-history-type">Seminar/Workshop</div>
+                        <div class="lr-history-dates">2024-01-25 to 2024-01-25</div>
+                        <div class="lr-history-reason">Attended AI Workshop</div>
+                        <span class="lr-status-badge lr-status-approved">Approved</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 
